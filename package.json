@@ -1,10 +1,10 @@
 {
-  "name": "app_name",
+  "name": "@axuata/bindify",
   "version": "0.1.0",
-  "description": "app_description",
-  "author": "author name",
+  "description": "⌨ Intuitive Key Binding Library",
+  "author": "Axuata",
   "license": "MIT",
-  "repository": "https://github.com/your/repository",
+  "repository": "https://github.com/axuata/bindify",
   "engines": {
     "node": ">=18.0.0"
   },
@@ -23,6 +23,7 @@
     "test": "vitest --run"
   },
   "devDependencies": {
+    "happy-dom": "^17.4.4",
     "typescript": "^5.8.2",
     "vitest": "^3.0.7"
   },
