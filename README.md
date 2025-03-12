@@ -1,0 +1,1 @@
+If you use this template, change the name in the LICENSE file to your own.

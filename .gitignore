@@ -1,0 +1,12 @@
+# Node.js
+node_modules/
+
+# TypeScript
+dist/
+build/
+*.log
+*.tsbuildinfo
+
+# IDE
+.idea/
+.vscode/
