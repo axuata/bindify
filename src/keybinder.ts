@@ -1,5 +1,10 @@
 export class Keybinder {
-  private binds: {keys: string[], callback: () => void, keydownListener: (e: KeyboardEvent) => void, keyupListener: (e: KeyboardEvent) => void}[] = [];
+  private binds: {
+    keys: string[],
+    callback: () => void,
+    keydownListener: (e: KeyboardEvent) => void,
+    keyupListener: (e: KeyboardEvent) => void
+  }[] = [];
 
   /**
    * Creates a keybind.
@@ -34,6 +39,8 @@ export class Keybinder {
 
   /**
    * Removes a keybind.
+   *
+   * It's recommended **not** to register **multiple keybinds** with **the same key**.
    *
    * @param {string[]} keys - **An array of keys** to remove the keybind for.
    */

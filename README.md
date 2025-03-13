@@ -28,9 +28,13 @@ pnpm install @axuata/bindify
 # ⚙️Functions
 - `createKeybind(keys: string[], callback: () => void)`  
 => Creates a keybind.  
-=> [Keys](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+=> [Keys values](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
 - `removeKeybind(keys: string[])`
 => Removes a keybind.
+
+# ⚠️Warning
+- If you call `createKeybind` **multiple times with the same key**, running `removeKeybind` will remove **the first registered keybind**, not the most recent one.
+  - so, It's recommended **not** to register **multiple keybinds** with **the same key**.
 
 # 📜Changelog
 ## 0.1.1
@@ -39,3 +43,7 @@ pnpm install @axuata/bindify
 - Add: removeKeybind function
 - Add: JSDoc
 - Add: Test codes for new features
+## 0.2.1
+- Add: Keywords for npm
+- Docs: Update README.md to warn users
+- Docs: Update JSDoc comment

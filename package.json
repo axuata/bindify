@@ -1,6 +1,6 @@
 {
   "name": "@axuata/bindify",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "⌨ Intuitive Key Binding Library",
   "author": "Axuata",
   "license": "MIT",
@@ -31,5 +31,5 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": []
+  "keywords": ["typescript", "keybind", "shortcuts"]
 }
