@@ -7,8 +7,8 @@ import {Keybinder} from '@axuata/bindify';
 
 const keybinder = new Keybinder();
 
-keybinder.createKeybind(['Shift', 'a'], () => {
-  console.log('Shift + a');
+keybinder.createKeybind(['ControlLeft', 'KeyS'], () => {
+  console.log('Saved! (ControlLeft + KeyS)');
 });
 ```
 
@@ -28,7 +28,7 @@ pnpm install @axuata/bindify
 # ⚙️Functions
 - `createKeybind(keys: string[], callback: () => void)`  
 => Creates a keybind.  
-=> [Keys values](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values)
+=> [Keys values](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_code_values)
 - `removeKeybind(keys: string[])`
 => Removes a keybind.
 
@@ -47,3 +47,6 @@ pnpm install @axuata/bindify
 - Add: Keywords for npm
 - Docs: Update README.md to warn users
 - Docs: Update JSDoc comment
+## 0.3.0
+- Add: Use `event.code`
+- Refactor: Removed unnecessary `if` statement

@@ -5,13 +5,13 @@ describe("Keybinder", () => {
   test('should trigger callback on correct keys with correct order', () => {
     const keybinder = new Keybinder();
     const mockCallback = vi.fn();
-    keybinder.createKeybind(['Shift', 'a'], mockCallback);
+    keybinder.createKeybind(['ShiftLeft', 'KeyA'], mockCallback);
 
-    const eventShift = new KeyboardEvent('keydown', { key: 'Shift' });
-    const eventA = new KeyboardEvent('keydown', { key: 'a' });
+    const eventShiftLeft = new KeyboardEvent('keydown', { code: 'ShiftLeft' });
+    const eventKeyA = new KeyboardEvent('keydown', { code: 'KeyA' });
 
-    document.dispatchEvent(eventShift);
-    document.dispatchEvent(eventA);
+    document.dispatchEvent(eventShiftLeft);
+    document.dispatchEvent(eventKeyA);
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
@@ -19,13 +19,13 @@ describe("Keybinder", () => {
   test('should trigger callback on correct keys with wrong order', () => {
     const keybinder = new Keybinder();
     const mockCallback = vi.fn();
-    keybinder.createKeybind(['Shift', 'a'], mockCallback);
+    keybinder.createKeybind(['ShiftLeft', 'KeyA'], mockCallback);
 
-    const eventA = new KeyboardEvent('keydown', { key: 'a' });
-    const eventShift = new KeyboardEvent('keydown', { key: 'Shift' });
+    const eventKeyA = new KeyboardEvent('keydown', { code: 'KeyA' });
+    const eventShiftLeft = new KeyboardEvent('keydown', { code: 'ShiftLeft' });
 
-    document.dispatchEvent(eventA);
-    document.dispatchEvent(eventShift);
+    document.dispatchEvent(eventKeyA);
+    document.dispatchEvent(eventShiftLeft);
 
     expect(mockCallback).toHaveBeenCalledTimes(1);
   });
@@ -33,10 +33,10 @@ describe("Keybinder", () => {
   test('shouldn\'t trigger callback on wrong keys with correct order', () => {
     const keybinder = new Keybinder();
     const mockCallback = vi.fn();
-    keybinder.createKeybind(['Shift', 'a'], mockCallback);
+    keybinder.createKeybind(['ShiftLeft', 'KeyA'], mockCallback);
 
-    const eventShift = new KeyboardEvent('keydown', { key: 'Shift' });
-    const eventA = new KeyboardEvent('keydown', { key: 'z' });
+    const eventShift = new KeyboardEvent('keydown', { code: 'ShiftLeft' });
+    const eventA = new KeyboardEvent('keydown', { code: 'KeyZ' });
 
     document.dispatchEvent(eventShift);
     document.dispatchEvent(eventA);
@@ -47,10 +47,10 @@ describe("Keybinder", () => {
   test('shouldn\'t trigger callback on wrong keys with wrong order', () => {
     const keybinder = new Keybinder();
     const mockCallback = vi.fn();
-    keybinder.createKeybind(['Shift', 'a'], mockCallback);
+    keybinder.createKeybind(['ShiftLeft', 'KeyA'], mockCallback);
 
-    const eventA = new KeyboardEvent('keydown', { key: 'z' });
-    const eventShift = new KeyboardEvent('keydown', { key: 'Shift' });
+    const eventA = new KeyboardEvent('keydown', { code: 'KeyZ' });
+    const eventShift = new KeyboardEvent('keydown', { code: 'ShiftLeft' });
 
     document.dispatchEvent(eventA);
     document.dispatchEvent(eventShift);
@@ -61,17 +61,17 @@ describe("Keybinder", () => {
   test('should remove keybind on correct keys', () => {
     const keybinder = new Keybinder();
     const callback = vi.fn();
-    const keys = ['Shift', 'a'];
+    const keys = ['ShiftLeft', 'KeyA'];
 
     keybinder.createKeybind(keys, callback);
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift' }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ShiftLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyA' }));
 
     keybinder.removeKeybind(keys);
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift' }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'a' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ShiftLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyA' }));
 
     expect(callback).toHaveBeenCalledTimes(1);
   });
@@ -79,17 +79,17 @@ describe("Keybinder", () => {
   test('shouldn\'t remove keybind on wrong keys', () => {
     const keybinder = new Keybinder();
     const callback = vi.fn();
-    const keys = ['Shift', 'a'];
+    const keys = ['ShiftLeft', 'KeyA'];
 
     keybinder.createKeybind(keys, callback);
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift' }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'b' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ShiftLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyB' }));
 
     keybinder.removeKeybind(keys);
 
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Shift' }));
-    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'b' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ShiftLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'KeyB' }));
 
     expect(callback).toHaveBeenCalledTimes(0);
   });

@@ -16,19 +16,17 @@ export class Keybinder {
     const pressedKeys: Set<string> = new Set<string>();
 
     const keydownListener = (event: KeyboardEvent): void => {
-      pressedKeys.add(event.key);
+      pressedKeys.add(event.code);
 
       const pressedArray = Array.from(pressedKeys);
 
-      if (pressedArray.length === keys.length) {
-        if (pressedArray.sort().join(',') === keys.sort().join(',')) {
-          callback();
-        }
+      if (pressedArray.sort().join(',') === keys.sort().join(',')) {
+        callback();
       }
     }
 
     const keyupListener = (event: KeyboardEvent): void => {
-      pressedKeys.delete(event.key);
+      pressedKeys.delete(event.code);
     }
 
     document.addEventListener('keydown', keydownListener);
